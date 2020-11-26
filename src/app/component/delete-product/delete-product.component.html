@@ -1,0 +1,50 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<div class="container">
+    <h2>Xoá sản phẩm</h2>
+    <form #deleteform="ngForm" (ngSubmit)="deleteProduct()">
+        <div class="form-group">
+            <label for="nameProduct">Tên sản phẩm</label>
+            <input readonly [(ngModel)]="product.nameProduct" type="text" class="form-control"
+                placeholder="Tên sản phẩm" name="nameProduct" required>
+        </div>
+        <div class="form-group">
+            <label for="pwd">Giá</label>
+            <input readonly [(ngModel)]="product.price" class="form-control" placeholder="Giá tiền" name="price"
+                required type="number">
+        </div>
+
+        <div class="form-group">
+            <label for="pwd">số lượng trong kho</label>
+            <input readonly [(ngModel)]="product.unitsInStock" class="form-control" placeholder="số lượng trong kho"
+                name="unitsInStock" id="unitsInStock" required type="number">
+        </div>
+
+        <div class="form-group">
+            <label for="email">Nhà sản xuất</label>
+            <input readonly [(ngModel)]="product.manufacturer" class="form-control" name="manufacturer"
+                id="manufacturer">
+        </div>
+
+        <div class="form-group">
+            <label for="category">Loại</label>
+            <input readonly [(ngModel)]="product.category" class="form-control" name="category" id="category">
+        </div>
+
+        <div class="form-group">
+            <label for="email">Mô tả</label>
+            <input readonly [(ngModel)]="product.description" type="description" class="form-control"
+                placeholder="Mô tả" id="description" name="description" required>
+            <input readonly [(ngModel)]="product.active" #active="ngModel" type="hidden" name="active" class="form-control">
+        </div>
+        <div>
+            <small class="text-danger">{{msg}}</small>
+        </div>
+        <button [disabled]="isInvalid()" type="submit" class="btn btn-danger">Xoá</button>
+    </form>
+    <!-- <small class="float-right" [routerLink]="['/register']">New user? Register here.</small> -->
+    <!-- [disabled]="loginform.form.invalid" -->
+</div>

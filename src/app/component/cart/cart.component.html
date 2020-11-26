@@ -1,0 +1,50 @@
+<app-header title="" subtitle="" button="view-cart"></app-header>
+<form class="cart_wrapper" method="post" action="#">
+    <h3>Giỏ hàng</h3>
+    <h6>Tổng cộng: {{cartInfor.quantityTotal}}</h6>
+    <table cellspacing="0" class="shop_table cart">
+        <thead>
+            <tr>
+                <th class="product-remove">&nbsp;</th>
+                <th class="product-name">Product</th>
+                <th class="product-price">Price</th>
+                <th class="product-quantity">Quantity</th>
+                <th class="product-subtotal">Total</th>
+            </tr>
+        </thead>
+        <tbody  *ngFor="let item of cartInfor.cartLines" >
+            <tr class="cart_item">
+                <td class="product-remove">
+                    <p (click)="deleteproductFromCart(item.productInfo.id)"  title="Remove this item" class="remove" href="#">×</p>
+                </td>
+                <td class="product-name">
+                    <a href="single-product.html">{{item.productInfo.nameProduct}}</a>
+                </td>
+
+                <td class="product-price">
+                    <span class="amount">{{item.productInfo.price}}</span>
+                </td>
+
+                <td class="product-quantity">
+                    <div class="quantity buttons_added">
+                        
+                        <input type="number" (change)="updateCart($event,item.productInfo.id)" class="input-text qty text"  
+                        [value]="item.quantity" min="1" step=1>
+                        
+                    </div>
+                </td>
+
+                <td class="product-subtotal">
+                    <span class="amount">{{item.amount}}</span>
+                </td>
+            </tr>
+        </tbody>
+        <tr>
+            <td class="actions" colspan="6">
+                <h4>Số sản phẩm: {{cartInfor.quantityTotal}}</h4>
+                <h4>Tổng tiền: {{cartInfor.amountTotal}}</h4>
+                <input type="button" (click)="checkout()" value="Checkout" name="proceed" class="checkout-button button alt wc-forward">
+            </td>
+        </tr>
+    </table>
+</form>

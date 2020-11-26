@@ -1,0 +1,25 @@
+.single-product-area .zigzag-bottom {background-color: #f4f4f4}
+
+.single-product-area {
+  padding: 80px 0 130px;
+}
+.single-shop-product {
+    margin-bottom: 50px;
+    border-radius: 5px;
+    box-shadow: 6px 6px 10px #dfdfdf;
+    box-sizing: border-box;
+    padding: 10px;
+}
+.single-shop-product h2 {
+    font-size: 20px;
+    margin: 10px 0;
+}
+
+.product-upper img{
+    width: 15vw;
+}
+
+.add_to_cart_button{
+    color:  rgb(127, 157, 255);
+    font-weight: bold;
+}

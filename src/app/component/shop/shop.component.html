@@ -1,0 +1,55 @@
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<app-header title="" subtitle="" button="view-cart"></app-header>
+
+    <div class="single-product-area">
+        <div class="zigzag-bottom"></div>
+        <div class="container">
+            <div class="row">
+                <div  *ngFor="let item of productList" class="col-md-3 col-sm-6">
+                    <div class="single-shop-product">
+                        <div class="product-upper">
+                            <img src="https://static.k-tuin.com/media/catalog/product/cache/1/image/0dc2d03fe217f8c83829496872af24a0/f/u/funda-para-iphone-11-pro-silicona-verde-berilo-de-apple.jpg" alt="">
+                        </div>
+                        <h2><a href="">{{item.nameProduct}}</a></h2>
+                        
+                        <div class="product-carousel-price">
+                            <ins>{{item.price}}</ins> triệu
+                        </div>
+    
+                        <div class="product-option-shop">
+                            <p class="add_to_cart_button" rel="nofollow" (click)="addtoCart(item.id)">Add to cart</p>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+    
+            <!-- <div class="row">
+                <div class="col-md-12">
+                    <div class="product-pagination text-center">
+                        <nav>
+                            <ul class="pagination">
+                                <li>
+                                    <a href="#" aria-label="Previous">
+                                        <span aria-hidden="true">&laquo;</span>
+                                    </a>
+                                </li>
+                                <li><a href="#">1</a></li>
+                                <li><a href="#">2</a></li>
+                                <li><a href="#">3</a></li>
+                                <li><a href="#">4</a></li>
+                                <li><a href="#">5</a></li>
+                                <li>
+                                    <a href="#" aria-label="Next">
+                                        <span aria-hidden="true">&raquo;</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div> -->
+        </div>
+    </div>
