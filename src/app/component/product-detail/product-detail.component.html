@@ -1,0 +1,43 @@
+<app-header title="" subtitle="" button="view-cart"></app-header>
+
+<div class="row wrapper">
+    <div class="col-sm-6">
+       
+        <div class="product-images">
+            <div class="product-main-img">
+              
+                <img src="https://static.k-tuin.com/media/catalog/product/cache/1/image/0dc2d03fe217f8c83829496872af24a0/f/u/funda-para-iphone-11-pro-silicona-verde-berilo-de-apple.jpg" alt="">
+            </div>
+
+            <div class="product-gallery">
+                <img src="img/product-thumb-1.jpg" alt="">
+                <img src="img/product-thumb-2.jpg" alt="">
+                <img src="img/product-thumb-3.jpg" alt="">
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-6 product-info-wrapper">
+        <div class="product-inner">
+            <h2 class="product-name">{{product.nameProduct}}</h2>
+            <div class="product-inner-price">
+                Giá: <ins>{{product.price}}</ins> đ 
+            </div>
+            <form action="" class="cart">
+                <button class="add_to_cart_button" (click)="addtoCart(product.id)" type="submit">Add to cart</button>
+            </form>
+            <div role="tabpanel">
+                <ul class="product-tab" role="tablist">
+                    <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab"
+                            data-toggle="tab">Description</a></li>
+                </ul>
+                <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane fade in active" id="home">
+                        <p>{{product.description}}</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

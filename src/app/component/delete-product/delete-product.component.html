@@ -3,7 +3,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-<div class="container">
+<div class="container mt-5 mb-5">
     <h2>Xoá sản phẩm</h2>
     <form #deleteform="ngForm" (ngSubmit)="deleteProduct()">
         <div class="form-group">
@@ -38,12 +38,14 @@
             <label for="email">Mô tả</label>
             <input readonly [(ngModel)]="product.description" type="description" class="form-control"
                 placeholder="Mô tả" id="description" name="description" required>
-            <input readonly [(ngModel)]="product.active" #active="ngModel" type="hidden" name="active" class="form-control">
+            <input readonly [(ngModel)]="product.active" #active="ngModel" type="hidden" name="active"
+                class="form-control">
         </div>
         <div>
             <small class="text-danger">{{msg}}</small>
         </div>
         <button [disabled]="isInvalid()" type="submit" class="btn btn-danger">Xoá</button>
+        <a href="/products" style="margin-left: 10px;" class="btn btn-info">Huỷ</a>
     </form>
     <!-- <small class="float-right" [routerLink]="['/register']">New user? Register here.</small> -->
     <!-- [disabled]="loginform.form.invalid" -->

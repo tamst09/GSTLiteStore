@@ -1,30 +1,38 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CartInfo } from '../../model/cart-info';
 import { CartLines } from '../../model/cart-lines';
 import { Product } from '../../model/product';
 import { ProductService } from '../../services/product.service';
 
 @Component({
-  selector: 'app-shop',
-  templateUrl: './shop.component.html',
-  styleUrls: ['./shop.component.css']
+  selector: 'app-product-detail',
+  templateUrl: './product-detail.component.html',
+  styleUrls: ['./product-detail.component.css']
 })
-export class ShopComponent implements OnInit {
+export class ProductDetailComponent implements OnInit {
 
   productList: Product[] = [];
   cartInfor = new CartInfo();
   cartList: Product[] = [];
-  constructor(private _service: ProductService, private _router: Router) { }
+  product = new Product();
+  msg=""
+
+  constructor(private _service: ProductService, private _router: Router, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.getAll()
+    this.getProduct(this.route.snapshot.params['id'])
   }
-
-  getAll() {
-    this._service.getAllProduct().subscribe((res: any) => {
-      this.productList = res
-    })
+  
+  getProduct(id: number) {
+    this._service.findProduct(id).subscribe(
+      data => {
+       this.product = data
+      },
+      error => {
+        this.msg = "ERROR";
+      }
+    );
   }
 
   toDeletePage(id: number) {
@@ -40,17 +48,14 @@ export class ShopComponent implements OnInit {
     this._router.navigate(['/createProduct']);
   }
 
-  toDetail(id) {
-    this._router.navigate([`/productDetail/${id}`]);
-   }
-
-  totalQuantity (cartLines){
+  totalQuantity(cartLines) {
     let sum = 0;
     cartLines.forEach(element => {
       sum = sum + element.quantity;
     });
     return sum;
   }
+
   totalAmount(cartLines) {
     let sum = 0;
     cartLines.forEach(element => {
@@ -58,12 +63,11 @@ export class ShopComponent implements OnInit {
     });
     return sum;
   }
-  isInclude(cartLines,id){
-    let res = { index : -1,productId : -1, isInclude: false}
+  isInclude(cartLines, id) {
+    let res = { index: -1, productId: -1, isInclude: false }
 
-    cartLines.forEach((element,i) => {
-      if(id == element.productInfo.id)
-      {
+    cartLines.forEach((element, i) => {
+      if (id == element.productInfo.id) {
         res.productId = element.id;
         res.index = i;
         res.isInclude = true;
@@ -73,24 +77,23 @@ export class ShopComponent implements OnInit {
     return res;
   }
 
-  addtoCart(id: number){
+  addtoCart(id: number) {
     console.log(id);
     this._service.findProduct(id).subscribe(
       data => {
         let cart = localStorage.getItem("Cart")
-        if(cart) {
+        if (cart) {
           this.cartInfor = JSON.parse(cart);
-          let res = this.isInclude(this.cartInfor.cartLines,data.id);
+          let res = this.isInclude(this.cartInfor.cartLines, data.id);
           console.log(res);
-          if(res.isInclude){
-            this.cartInfor.cartLines[res.index].quantity +=1;
-            this.cartInfor.cartLines[res.index].amount = this.cartInfor.cartLines[res.index].quantity 
-            * this.cartInfor.cartLines[res.index].productInfo.price;
+          if (res.isInclude) {
+            this.cartInfor.cartLines[res.index].quantity += 1;
+            this.cartInfor.cartLines[res.index].amount += this.cartInfor.cartLines[res.index].amount;
             this.cartInfor.amountTotal = this.totalAmount(this.cartInfor.cartLines);
             this.cartInfor.quantityTotal = this.totalQuantity(this.cartInfor.cartLines);
-            localStorage.setItem('Cart', JSON.stringify(this.cartInfor)); 
+            localStorage.setItem('Cart', JSON.stringify(this.cartInfor));
             alert("Đã thêm vào giỏ hàng")
-          }else{
+          } else {
             let cartlines = new CartLines();
             cartlines.productInfo = data;
             cartlines.quantity = 1;
@@ -99,9 +102,9 @@ export class ShopComponent implements OnInit {
             this.cartInfor.amountTotal = this.totalAmount(this.cartInfor.cartLines);;
             this.cartInfor.quantityTotal = this.totalQuantity(this.cartInfor.cartLines);
             localStorage.setItem('Cart', JSON.stringify(this.cartInfor));
-            alert("Đã thêm vào giỏ hàng") 
+            alert("Đã thêm vào giỏ hàng")
           }
-        }else{
+        } else {
           console.log("new")
           let newCartInfor = new CartInfo();
           let cartlines = new CartLines();
@@ -120,4 +123,5 @@ export class ShopComponent implements OnInit {
       }
     );
   }
+
 }

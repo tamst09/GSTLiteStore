@@ -61,7 +61,8 @@ export class CartComponent implements OnInit {
       console.log(res);
       if (res.isInclude) {
         this.cartInfor.cartLines[res.index].quantity += 1;
-        this.cartInfor.cartLines[res.index].amount += this.cartInfor.cartLines[res.index].amount;
+        this.cartInfor.cartLines[res.index].amount = this.cartInfor.cartLines[res.index].quantity 
+        * this.cartInfor.cartLines[res.index].productInfo.price;
         this.cartInfor.amountTotal = this.totalAmount(this.cartInfor.cartLines);
         this.cartInfor.quantityTotal = this.totalQuantity(this.cartInfor.cartLines);
         localStorage.setItem('Cart', JSON.stringify(this.cartInfor));

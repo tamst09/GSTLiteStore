@@ -9,8 +9,8 @@
             <div class="row">
                 <div  *ngFor="let item of productList" class="col-md-3 col-sm-6">
                     <div class="single-shop-product">
-                        <div class="product-upper">
-                            <img src="https://static.k-tuin.com/media/catalog/product/cache/1/image/0dc2d03fe217f8c83829496872af24a0/f/u/funda-para-iphone-11-pro-silicona-verde-berilo-de-apple.jpg" alt="">
+                        <div class="product-upper" (click)="toDetail(item.id)">
+                            <img style="cursor: pointer;" src="https://static.k-tuin.com/media/catalog/product/cache/1/image/0dc2d03fe217f8c83829496872af24a0/f/u/funda-para-iphone-11-pro-silicona-verde-berilo-de-apple.jpg" alt="">
                         </div>
                         <h2><a href="">{{item.nameProduct}}</a></h2>
                         
@@ -19,7 +19,7 @@
                         </div>
     
                         <div class="product-option-shop">
-                            <p class="add_to_cart_button" rel="nofollow" (click)="addtoCart(item.id)">Add to cart</p>
+                            <p style="cursor: pointer;" class="add_to_cart_button" rel="nofollow" (click)="addtoCart(item.id)">Add to cart</p>
                         </div>
                         
                     </div>
