@@ -15,6 +15,7 @@ import { HeaderComponent } from './component/header/header.component';
 import { CartComponent } from './component/cart/cart.component';
 import { ShopComponent } from './component/shop/shop.component';
 import { ProductDetailComponent } from './component/product-detail/product-detail.component';
+import { authInterceptorProviders } from '../_helpers/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,7 @@ import { ProductDetailComponent } from './component/product-detail/product-detai
     HttpClientModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [authInterceptorProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

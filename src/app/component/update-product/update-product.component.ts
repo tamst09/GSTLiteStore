@@ -50,7 +50,14 @@ export class UpdateProductComponent implements OnInit {
         this._router.navigate(['/products']);
       },
       error => {
-        this.msg = "ERROR";
+        if(error.status===401)
+        {
+          console.log("unauthenticated");
+          this._router.navigate(['/login']);
+        }
+        else{
+          this.msg = "Error";
+        }
       }
     )
   }

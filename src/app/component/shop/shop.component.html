@@ -3,30 +3,33 @@
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <app-header title="" subtitle="" button="view-cart"></app-header>
 
-    <div class="single-product-area">
-        <div class="zigzag-bottom"></div>
-        <div class="container">
-            <div class="row">
-                <div  *ngFor="let item of productList" class="col-md-3 col-sm-6">
-                    <div class="single-shop-product">
-                        <div class="product-upper" (click)="toDetail(item.id)">
-                            <img style="cursor: pointer;" src="https://static.k-tuin.com/media/catalog/product/cache/1/image/0dc2d03fe217f8c83829496872af24a0/f/u/funda-para-iphone-11-pro-silicona-verde-berilo-de-apple.jpg" alt="">
-                        </div>
-                        <h2><a href="">{{item.nameProduct}}</a></h2>
-                        
-                        <div class="product-carousel-price">
-                            <ins>{{item.price}}</ins> triệu
-                        </div>
-    
-                        <div class="product-option-shop">
-                            <p style="cursor: pointer;" class="add_to_cart_button" rel="nofollow" (click)="addtoCart(item.id)">Add to cart</p>
-                        </div>
-                        
+<div class="single-product-area">
+    <div class="zigzag-bottom"></div>
+    <div class="container">
+        <div class="row">
+            <div *ngFor="let item of productList" class="col-md-3 col-sm-6">
+                <div class="single-shop-product">
+                    <div class="product-upper" (click)="toDetail(item.id)">
+                        <img style="cursor: pointer;"
+                            src="https://static.k-tuin.com/media/catalog/product/cache/1/image/0dc2d03fe217f8c83829496872af24a0/f/u/funda-para-iphone-11-pro-silicona-verde-berilo-de-apple.jpg"
+                            alt="">
                     </div>
+                    <h2><a href="">{{item.nameProduct}}</a></h2>
+
+                    <div class="product-carousel-price">
+                        <ins>{{item.price}}</ins> triệu
+                    </div>
+
+                    <div class="product-option-shop">
+                        <p style="cursor: pointer;" class="add_to_cart_button" rel="nofollow"
+                            (click)="addtoCart(item.id)">Add to cart</p>
+                    </div>
+
                 </div>
             </div>
-    
-            <!-- <div class="row">
+        </div>
+
+        <!-- <div class="row">
                 <div class="col-md-12">
                     <div class="product-pagination text-center">
                         <nav>
@@ -51,5 +54,5 @@
                     </div>
                 </div>
             </div> -->
-        </div>
     </div>
+</div>

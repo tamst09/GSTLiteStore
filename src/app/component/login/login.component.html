@@ -7,7 +7,8 @@
     <div class="col-lg-6">
       <div class="card">
         <article class="card-body">
-          <h4 class="card-title text-center mb-4 mt-1">Đăng nhập</h4>
+          <h4 class="card-title text-center mb-1 mt-1">Đăng nhập</h4>
+          <p class="card-title text-center mb-1 mt-1">Chỉ dành cho admin</p>
           <hr>
           <p class="text-success text-center">{{msg}}</p>
           <form #loginform="ngForm" (ngSubmit)="loginUser()">
@@ -47,7 +48,7 @@
           <div class="form-group">
           <button type="submit" class="btn btn-primary btn-block" [disabled]="loginform.form.invalid"> Đăng nhập </button>
           </div> <!-- form-group// -->
-          <p class="text-center"><a [routerLink]="['/register']" class="btn">Chưa có tài khoản? Đăng ký ngay.</a></p>
+          <p class="text-center"><a [routerLink]="['/shop']" class="btn">Ghé thăm shop</a></p>
           </form>
         </article>
         </div>

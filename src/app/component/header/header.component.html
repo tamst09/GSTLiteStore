@@ -10,9 +10,9 @@
                  <span style="font-size: 1rem;" class="lead"></span>
             </div>
             <div class="col text-right">
-                <button  *ngIf="button === 'logout'" type="button" style="margin-top: 7px;" 
-                    class="btn btn-danger"  >
-                     logout
+                <button  *ngIf="button === 'view-cart'" type="button" style="margin-top: 7px;" 
+                    class="btn btn-danger mr-2" (click)="gotoManageProduct()" >
+                     Manage products
                 </button>
                 <button  *ngIf="button === 'view-cart'" type="button"  style="margin-top: 7px;" 
                     class="btn btn-light"  routerLink="/cart" >

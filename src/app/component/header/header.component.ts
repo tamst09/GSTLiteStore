@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { CartInfo } from '../../model/cart-info';
 import { LoginService } from '../../services/login.service';
 import { ProductService } from '../../services/product.service';
+import { LoginComponent } from '../login/login.component';
 
 @Component({
   selector: 'app-header',
@@ -42,4 +43,7 @@ export class HeaderComponent implements OnInit {
     );
   }
 
+  public gotoManageProduct(){
+      this._router.navigate(["/products"]);
+  }
 }

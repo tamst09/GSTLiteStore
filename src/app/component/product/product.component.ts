@@ -19,9 +19,14 @@ export class ProductComponent implements OnInit {
   }
   
   getAll(){
-    this._service.getAllProduct().subscribe((res: any) => {
+    this._service.getAllProduct().subscribe(
+      (res: any) => {
       this.productList = res;
-    })
+      },
+      error => {
+        this._router.navigate(['/login']);
+      }
+    );
   }
 
   toDeletePage(id: number){
